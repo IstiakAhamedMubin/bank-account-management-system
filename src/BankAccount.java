@@ -37,7 +37,9 @@ public class  BankAccount extends Account {
         System.out.println("Deposited(double): $"+String.format("%.2f",amount) + "|New Balance: $"+ String.format("%.2f",getBalance()));
     }
     public void withdraw(double amount) throws InsufficientFundsException {
-
+        if(amount <= 0){
+            throw new ArithmeticException("Withdrawal amount must be positive");
+        }
         if (amount > getBalance()) {
             throw new InsufficientFundsException(amount,getBalance());
         }
