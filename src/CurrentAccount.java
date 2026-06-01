@@ -11,7 +11,6 @@ public class CurrentAccount extends BankAccount {
 
     @Override
     public void displayInfo() {
-
         System.out.println("\nCurrent Account: ");
         super.displayInfo();
         System.out.println("Interest: "+ calculateInterest());
