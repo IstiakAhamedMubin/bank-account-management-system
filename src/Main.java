@@ -1,37 +1,77 @@
+import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        SavingsAccount savings = new SavingsAccount("S-93849739", 20000, "Solo");
-        CurrentAccount current = new CurrentAccount("C-35323344", 10000, "Leveling");
+        Scanner input = new Scanner(System.in);
 
-        System.out.println("Runtime Polymorphism: ");
+        System.out.println("--------$ Bank Account Management System $--------");
+
+        System.out.print("Enter Savings Account Number: ");
+        String savingsAccNo = input.nextLine();
+
+        System.out.print("Enter Savings Account Holder Name: ");
+        String savingsHolder = input.nextLine();
+
+        System.out.print("Enter Savings Account Initial Balance: ");
+        double savingsBalance = input.nextDouble();
+        input.nextLine();
+
+        System.out.print("\nEnter Current Account Number: ");
+        String currentAccNo = input.nextLine();
+
+        System.out.print("Enter Current Account Holder Name: ");
+        String currentHolder = input.nextLine();
+
+        System.out.print("Enter Current Account Initial Balance: ");
+        double currentBalance = input.nextDouble();
+
+        SavingsAccount savings = new SavingsAccount(savingsAccNo, savingsBalance, savingsHolder);
+
+        CurrentAccount current = new CurrentAccount(currentAccNo, currentBalance, currentHolder);
+
+        System.out.println("\n-----Runtime Polymorphism----");
+
         Account[] accounts = {savings, current};
+
         for (Account account : accounts) {
             account.displayInfo();
             System.out.println("Calculated Interest: $" + String.format("%.2f", account.calculateInterest()));
         }
+        System.out.println("\n------Compile-Time Polymorphism------");
 
-        System.out.println("\nDeposit Sample:  ");
-        BankAccount bankAccount = new BankAccount("B-4487498", 750, "Arise");
-        bankAccount.deposit(2470);
-        bankAccount.deposit(500.50);
+        BankAccount bankAccount = new BankAccount("BD-999", 1000, "Bangladeshi Dealer");
 
-        System.out.println("\nWithdraw Sample:   ");
+        bankAccount.deposit(500);
+        bankAccount.deposit(250.75);
+
+        System.out.println("\n----Exception Handling-----");
+
+        System.out.print("Enter Withdrawal Amount: ");
+
         try {
-            bankAccount.withdraw(3000);
+            double amount = input.nextDouble();
+            bankAccount.withdraw(amount);
+
         } catch (InsufficientFundsException e) {
             System.out.println("Exception: " + e.getMessage());
+
         } finally {
             System.out.println("Current Balance: $" + String.format("%.2f", bankAccount.getBalance()));
         }
 
-        System.out.println("\nMulti-Catch Block Sample:   ");
+        System.out.println("\n-----Multi-Catch Example-----");
+
         try {
-            bankAccount.withdraw(-300);
+            System.out.print("Enter Another Withdrawal Amount: ");
+            double amount = input.nextDouble();
+            bankAccount.withdraw(amount);
+
         } catch (InsufficientFundsException | ArithmeticException e) {
             System.out.println("Error: " + e.getMessage());
+
         } finally {
-            System.out.println("Balance after transaction: $" + String.format("%.2f", bankAccount.getBalance()));
+            System.out.println("Balance After Transaction: $" + String.format("%.2f", bankAccount.getBalance()));
         }
+        input.close();
     }
 }
