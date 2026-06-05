@@ -14,13 +14,14 @@ A Java-based Bank Account Management System developed to demonstrate Object-Orie
 * Custom exception handling for insufficient funds
 * Validation for invalid account operations
 
-## OOP Concepts Used
+## OOP Concepts Used 
 
 * Encapsulation
 * Inheritance
 * Abstraction
 * Method Overloading
 * Exception Handling
+* Custom Exception
 
 ## Project Structure
 
