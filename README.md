@@ -27,7 +27,7 @@ A Java-based Bank Account Management System developed to demonstrate Object-Orie
 * `Account.java` - Abstract parent class
 * `BankAccount.java` - Base bank account implementation
 * `SavingsAccount.java` - Savings account with interest calculation
-* `CurrentAccount.java` - Current account implementation
+* `CurrentAccount.java` - Current account implementation with interest calculation
 * `InsufficientFundsException.java` - Custom exception class
 * `Main.java` - Driver class for testing the system
 
